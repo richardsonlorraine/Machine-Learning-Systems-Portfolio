@@ -7,206 +7,286 @@ Monitoring and reliability systems
 LLM fine-tuning and advanced AI techniques
 All projects are built with a focus on scalability, performance, and real-world constraints.
 
-Portfolio Index: Machine Learning Systems
-1. End-to-End Machine Learning Pipeline Engineering
-1.1 Introduction: Overview of modular pipeline design.
-1.2 System Overview: Sequence of deterministic transformations.
-1.3 Data Engineering Layer: Cleaning, validation, and structured datasets.
-1.4 Feature Engineering & Transformation: Numerical scaling and categorical encoding.
-1.5 Model Training System: Implementation using Scikit-Learn and TensorFlow.
-1.6 Model Evaluation: Quantitative metrics (Accuracy, F1, ROC-AUC).
-1.7 Inference System: Latency-optimized real-time predictions.
-2. LLM Fine-Tuning Framework
-2.1 Introduction: Memory-efficient training for Large Language Models.
-2.2 System Overview: Modular pipeline (Tokenization to Inference).
-2.4 LoRA-Based Fine-Tuning: Parameter-efficient adaptation via low-rank matrices.
-2.5 QLoRA (Quantised Fine-Tuning): 4-bit quantization (NF4) for reduced VRAM.
-2.6 Validation & Evaluation: K-Fold cross-validation and fairness auditing.
-2.7 Inference System: Compact adapter merging for deployment.
-3. Production Machine Learning Model Deployment System
-3.1 Introduction: REST API, Docker, and Kubernetes integration.
-3.2 System Overview: Modular MLOps architecture.
-3.4 Inference API System: Flask-based RESTful service for real-time requests.
-3.5 Containerisation System: Docker image optimization and dependency pinning.
-3.6 Orchestration & Cloud Deployment: Azure Kubernetes Service (AKS) and ACR.
-3.7 CI/CD Pipeline: Automated build, test, and deployment flow.
-3.8 Monitoring & Performance: Tracking latency (P99) and data drift.
-4. MLOps Monitoring & Observability System
-4.1 Introduction: Mitigating risks of performance degradation and data drift.
-4.4 System Performance Monitoring: Using Prometheus and Grafana for dashboards.
-4.5 Data Drift Detection: Statistical comparison of feature distributions.
-4.6 Model Performance Monitoring: Tracking F1 and accuracy over time.
-4.7 Logging and Observability: Structured logging for root cause analysis.
-4.8 Alerting System: Automated notifications for threshold breaches.
-5. Autonomous AI Troubleshooting and Reliability Agent
-5.1 Introduction: NLP-based diagnostics and automated remediation.
-5.2 System Overview: The "Perceive–Reason–Act" loop.
-5.4 Perception Layer: Intent recognition and entity extraction.
-5.5 Reasoning Engine: Hybrid deterministic and embedding-based logic.
-5.6 ML Reliability System: Skew detection to prevent schema mismatch.
-5.7 Remediation Engine: Execution of low-risk automated fixes.
-6. Advanced AI Systems
-6.1 Introduction: Privacy-preserving and interpretable frameworks.
-6.4 Federated Learning: Decentralized training using federated averaging.
-6.5 Ensemble Learning: Bagging, boosting, and stacking techniques.
-6.6 Transfer Learning: Selective layer freezing for training efficiency.
-6.7 Explainable AI (XAI): Implementation of SHAP for model transparency.
-6.8 Comparative Evaluation: Analysis of technical trade-offs.
-
-
 Project 1 — End-to-End Machine Learning Pipeline Engineering
+
 Highlights: End-to-end pipeline, feature engineering and strong evaluation
+
 Tech: Python, pandas, scikit-learn
-1.1 Introduction This chapter presents the design and implementation of a modular end-to-end machine learning pipeline that manages the complete lifecycle of a predictive model, from raw data ingestion through to inference. The system is designed with a focus on:
-Reproducibility, scalability, maintainability and production readiness
+
+1.1 Introduction 
+
+This chapter presents the design and implementation of a modular end-to-end machine learning pipeline that manages the complete lifecycle of a predictive model, from raw data ingestion through to inference. The system is designed with a focus on:
+
+* Reproducibility, 
+
+* scalability, 
+
+* maintainability and 
+
+* production readiness
+
 Unlike experimental workflows, this pipeline enforces structured data transformations and consistent processing across both training and inference environments.
 
-1.2 System Overview The pipeline is structured as a sequence of deterministic transformations:
+1.2 System Overview 
+
+The pipeline is structured as a sequence of deterministic transformations:
 Raw Data -> Data Engineering Layer -> Preprocessing Pipeline -> Model Training -> Evaluation ->
 Inference Interface
 Each stage is modular, enabling independent updates and reuse across different datasets and models.
 
 1.3 Data Engineering Layer
 
-1.3.1 Objective To transform unstructured or inconsistent raw data into a clean and structured format suitable for downstream machine learning tasks.
+1.3.1 Objective 
 
-1.3.2 Architecture Raw Data → Cleaning → Validation → Structured Dataset
+To transform unstructured or inconsistent raw data into a clean and structured format suitable for downstream machine learning tasks.
 
-1.3.3 Implementation Data preprocessing was implemented using pandas.
+1.3.2 Architecture 
+
+Raw Data → Cleaning → Validation → Structured Dataset
+
+1.3.3 Implementation 
+
+Data preprocessing was implemented using pandas.
+
 import pandas as pd
+
 df = pd.read_csv("data.csv")
+
 df = df.dropna()
+
 df = df.drop_duplicates()
 
 1.3.4 Technical Analysis
-Missing values are removed to prevent training instability
-Duplicate records are eliminated to reduce bias
-Data consistency is enforced prior to feature transformation
 
-1.3.5 Results: Dataset cleaned and standardised
-Null values removed: Yes
-Duplicate rows removed: Yes
+* Missing values are removed to prevent training instability
 
-1.3.6 Evaluation The preprocessing stage significantly improves model reliability by ensuring clean input data. However, aggressive cleaning may lead to loss of potentially useful information.
+* Duplicate records are eliminated to reduce bias
+
+* Data consistency is enforced prior to feature transformation
+
+1.3.5 Results: 
+
+Dataset cleaned and standardised
+
+* Null values removed: Yes
+
+* Duplicate rows removed: Yes
+
+1.3.6 Evaluation 
+
+The preprocessing stage significantly improves model reliability by ensuring clean input data. However, aggressive cleaning may lead to loss of potentially useful information.
 
 1.3.7 Engineering Considerations
-Data validation rules must be consistent across environments
-Over-cleaning can reduce dataset size
-Preprocessing must be reproducible
+
+* Data validation rules must be consistent across environments
+
+* Over-cleaning can reduce dataset size
+
+* Preprocessing must be reproducible
 
 1.4 Feature Engineering & Transformation
 
-1.4.1 Objective To convert raw input features into a format suitable for model training.
+1.4.1 Objective 
 
-1.4.2 Architecture Structured Data → Encoding / Scaling → Model-Ready Features
+To convert raw input features into a format suitable for model training.
 
-1.4.3 Implementation Feature transformations were implemented using pipelines from scikit-learn.
+1.4.2 Architecture 
+
+Structured Data → Encoding / Scaling → Model-Ready Features
+
+1.4.3 Implementation 
+
+Feature transformations were implemented using pipelines from scikit-learn.
+
 from sklearn.compose import ColumnTransformer
+
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
+
 preprocessor = ColumnTransformer([("num", StandardScaler(), numerical_features), ("cat", OneHotEncoder(), categorical_features)])
 
 1.4.4 Technical Analysis
-Numerical features are standardised to ensure consistent magnitude
-Categorical variables are encoded into numerical representations
-Transformation pipelines ensure consistency between training and inference
+
+* Numerical features are standardised to ensure consistent magnitude
+
+* Categorical variables are encoded into numerical representations
+
+* Transformation pipelines ensure consistency between training and inference
 
 1.4.5 Results
-Features scaled: Yes
-Categorical variables encoded: Yes
-Output: Model-ready feature matrix
 
-1.4.6 Evaluation Feature engineering improves model performance by ensuring input consistency. However, one-hot encoding may increase dimensionality significantly.
+* Features scaled: Yes
+
+* Categorical variables encoded: Yes
+
+* Output: Model-ready feature matrix
+
+1.4.6 Evaluation 
+
+Feature engineering improves model performance by ensuring input consistency. However, one-hot encoding may increase dimensionality significantly.
 
 1.4.7 Engineering Considerations
-High-dimensional features increase computational cost
-Transformation pipelines must be saved and reused during inference
-Feature drift must be monitored over time
+
+* High-dimensional features increase computational cost
+
+* Transformation pipelines must be saved and reused during inference
+
+* Feature drift must be monitored over time
 
 1.5 Model Training System
 
-1.5.1 Objective To train a predictive model capable of generalising to unseen data.
+1.5.1 Objective 
 
-1.5.2 Architecture Features → Model Training → Trained Model
+To train a predictive model capable of generalising to unseen data.
 
-1.5.3 Implementation The model was trained using standard machine learning techniques from scikit-learn and optionally deep learning via TensorFlow.
+1.5.2 Architecture 
+
+Features → Model Training → Trained Model
+
+1.5.3 Implementation 
+
+The model was trained using standard machine learning techniques from scikit-learn and optionally deep learning via TensorFlow.
+
 from sklearn.ensemble import RandomForestClassifier
+
 model = RandomForestClassifier()
+
 model.fit(X_train, y_train)
 
 1.5.4 Technical Analysis
-The model learns relationships between input features and target labels
-Training is performed on structured feature matrices
-Generalisation is achieved through exposure to diverse training samples
+
+* The model learns relationships between input features and target labels
+
+* Training is performed on structured feature matrices
+
+* Generalisation is achieved through exposure to diverse training samples
 
 1.5.5 Results
-F1 Score: 0.87
-ROC-AUC: 0.92
-Cross-validation variance: Low
 
-1.5.6 Evaluation The model demonstrates strong predictive performance and generalisation capability. Performance stability indicates effective preprocessing and feature engineering.
+* F1 Score: 0.87
+
+* ROC-AUC: 0.92
+
+* Cross-validation variance: Low
+
+1.5.6 Evaluation 
+
+The model demonstrates strong predictive performance and generalisation capability. Performance stability indicates effective preprocessing and feature engineering.
 
 1.5.7 Engineering Considerations
-Model complexity impacts training time
-Overfitting must be controlled via validation
-Hyperparameter tuning can further improve performance
+
+* Model complexity impacts training time
+
+* Overfitting must be controlled via validation
+
+* Hyperparameter tuning can further improve performance
 
 1.6 Model Evaluation
 
-1.6.1 Objective To assess model performance using quantitative metrics.
+1.6.1 Objective 
 
-1.6.2 Metrics: Accuracy, F1 Score and ROC-AUC
+To assess model performance using quantitative metrics.
+
+1.6.2 Metrics: 
+
+* Accuracy,
+
+* F1 Score and
+
+* ROC-AUC
 
 1.6.3 Results
-Accuracy: 0.89
-F1 Score: 0.87
-ROC-AUC: 0.92
+
+* Accuracy: 0.89
+
+* F1 Score: 0.87
+
+* ROC-AUC: 0.92
 
 1.6.4 Evaluation
-F1 score provides balance between precision and recall
-ROC-AUC indicates strong classification performance
-Metrics confirm model suitability for deployment
+
+* F1 score provides balance between precision and recall
+
+* ROC-AUC indicates strong classification performance
+
+* Metrics confirm model suitability for deployment
 
 1.7 Inference System
 
-1.7.1 Objective To generate predictions on unseen data using the trained model.
+1.7.1 Objective 
 
-1.7.2 Architecture New Data → Preprocessing → Model → Prediction
+To generate predictions on unseen data using the trained model.
 
-1.7.3 Implementation prediction = model.predict(new_data)
+1.7.2 Architecture 
+
+New Data → Preprocessing → Model → Prediction
+
+1.7.3 Implementation 
+
+prediction = model.predict(new_data)
 
 1.7.4 Results
-Input: New sample
-Output: Predicted class
-Latency: ~120ms
 
-1.7.5 Evaluation The inference system provides fast and consistent predictions. Latency remains within acceptable production thresholds.
+* Input: New sample
+
+* Output: Predicted class
+
+* Latency: ~120ms
+
+1.7.5 Evaluation 
+
+The inference system provides fast and consistent predictions. Latency remains within acceptable production thresholds.
 
 1.7.6 Engineering Considerations
-Inference must reuse preprocessing pipeline
-Latency must remain low for real-time systems
-Batch vs real-time inference trade-offs
+
+* Inference must reuse preprocessing pipeline
+
+* Latency must remain low for real-time systems
+
+* Batch vs real-time inference trade-offs
 
 1.8 Implemented System Summary
-Built full preprocessing pipeline using pandas and scikit-learn
-Engineered features using scaling and encoding techniques
-Trained classification model with strong performance metrics
-Evaluated model using F1-score and ROC-AUC
-Implemented inference pipeline for real-time predictions
 
-1.9 Conclusion This chapter demonstrated the development of a complete machine learning pipeline, from data preprocessing to model inference. The system highlights the importance of:
-modular design
-reproducibility
-consistent data transformation
-performance evaluation
+* Built full preprocessing pipeline using pandas and scikit-learn
+
+* Engineered features using scaling and encoding techniques
+
+* Trained classification model with strong performance metrics
+
+* Evaluated model using F1-score and ROC-AUC
+
+* Implemented inference pipeline for real-time predictions
+
+1.9 Conclusion 
+
+This chapter demonstrated the development of a complete machine learning pipeline, from data preprocessing to model inference. The system highlights the importance of:
+
+* modular design
+
+* reproducibility
+
+* consistent data transformation
+
+* performance evaluation
+
 These principles form the foundation for building production-ready machine learning systems.
 
+
 Project 2: LLM Fine-Tuning Framework
+
 Highlights: LoRA / QLoRA, memory-efficient training and Hugging Face ecosystem
+
 Tech: PyTorch, and Hugging Face Transformers
-2.1 Introduction Large Language Models (LLMs) require significant computational resources for full fine-tuning, often exceeding the capabilities of standard hardware. This chapter presents a parameter-efficient fine-tuning framework designed to adapt pretrained LLMs to specialised tasks while minimising memory usage and training cost. The system leverages:
-Low-Rank Adaptation (LoRA)
-Quantised LoRA (QLoRA)
-modular adapter-based training
+
+2.1 Introduction 
+
+Large Language Models (LLMs) require significant computational resources for full fine-tuning, often exceeding the capabilities of standard hardware. This chapter presents a parameter-efficient fine-tuning framework designed to adapt pretrained LLMs to specialised tasks while minimising memory usage and training cost. The system leverages:
+
+* Low-Rank Adaptation (LoRA)
+
+* Quantised LoRA (QLoRA)
+
+* modular adapter-based training
+
 The objective is to enable high-performance fine-tuning on consumer-grade hardware while preserving the model’s general knowledge.
 
 2.2 System Overview The framework is structured as a modular pipeline:
