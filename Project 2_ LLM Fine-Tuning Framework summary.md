@@ -6,6 +6,7 @@ Project 2: LLM Fine-Tuning Framework
 * Technologies Used: PyTorch, Hugging Face Transformers, PEFT, and BitsAndBytes.
 
 * System Architecture: 
+
 	Dataset -> Tokenization -> Frozen Base Model + Injected Trainable LoRA/QLoRA Adapters -> Validation -> Inference Adapter Merging.
 
 Key Mechanisms & Results:
