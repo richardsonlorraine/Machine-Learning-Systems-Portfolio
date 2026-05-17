@@ -1,4 +1,5 @@
 Summary
+
 Project 1 - End-to-End Machine Learning Pipeline Engineering
 
 * Core Focus: Building a modular, reproducible, and production-ready machine learning pipeline that enforces structured data transformations across both training and inference environments.
