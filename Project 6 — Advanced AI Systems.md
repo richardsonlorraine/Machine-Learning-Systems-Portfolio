@@ -59,13 +59,9 @@ To enable decentralised model training without transferring raw data.
 6.4.2 Architecture
 
 Client Nodes → Local Training → Weight Updates
-
                      ↓
-
                Aggregation Server
-
                      ↓
-
                 Global Model
 
 6.4.3 Implementation 
@@ -75,7 +71,6 @@ Federated averaging was implemented to aggregate model updates.
 import numpy as np
 
 def federated_averaging(local_weights):
-
     return np.mean(local_weights, axis=0)
 
 6.4.4 Technical Analysis
