@@ -206,9 +206,7 @@ Metrics → Threshold Check → Alert Trigger → Notification
 Alerts are triggered when:
 
 * latency exceeds threshold
-
 * drift score exceeds threshold
-
 * error rate increases
 
 4.8.4 Results
@@ -248,13 +246,9 @@ escalation policies
 4.10 Implemented System Summary
 
 * Implemented real-time system monitoring using Prometheus and Grafana
-
 * Built data drift detection system using statistical comparison
-
 * Tracked model performance over time
-
 * Implemented structured logging for observability
-
 * Developed alerting system for anomaly detection
 
 4.11 Conclusion 
@@ -262,9 +256,7 @@ escalation policies
 This chapter demonstrated the implementation of a comprehensive MLOps monitoring and observability system. The system highlights:
 
 * the importance of continuous monitoring in production ML systems
-
 * the role of drift detection in maintaining model performance
-
 * the need for logging and alerting to ensure system reliability
 
 These capabilities are essential for maintaining robust and trustworthy machine learning systems in real-world environments.
