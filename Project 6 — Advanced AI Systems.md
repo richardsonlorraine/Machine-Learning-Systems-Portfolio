@@ -3,9 +3,7 @@ Project 6 — Advanced AI Systems
 Highlights:
 
 * federated learning
-
 * ensembles
-
 * explainability
 
 Tech: SHAP
@@ -15,21 +13,15 @@ Tech: SHAP
 This chapter presents the design and implementation of an advanced AI systems framework that integrates:
 
 * Federated Learning (privacy-preserving training)
-
 * Ensemble Learning (performance optimisation)
-
 * Transfer Learning (computational efficiency)
-
 * Explainable AI (model transparency)
 
 The system is designed to address key limitations of traditional machine learning approaches, particularly:
 
 * centralised data dependency
-
 * lack of interpretability
-
 * high computational cost
-
 * performance instability
 
 The objective is to develop a scalable, privacy-aware, and interpretable AI system suitable for real-world deployment scenarios.
@@ -89,17 +81,13 @@ def federated_averaging(local_weights):
 6.4.4 Technical Analysis
 
 * training occurs locally on edge devices
-
 * only model weights are shared
-
 * aggregation produces a global model without data centralisation
 
 6.4.5 Results
 
 * Centralised Accuracy: 0.91
-
 * Federated Accuracy: 0.88
-
 * Privacy Preservation: Achieved
 
 6.4.6 Evaluation 
@@ -109,9 +97,7 @@ Federated learning enables strong privacy guarantees with only minor performance
 6.4.7 Engineering Considerations
 
 * communication overhead between nodes
-
 * non-IID data challenges
-
 * aggregation latency
 
 6.5 Ensemble Learning System
@@ -135,15 +121,12 @@ ensemble = VotingClassifier(estimators=[('m1', model1), ('m2', model2)], voting=
 6.5.4 Technical Analysis
 
 * bagging reduces variance
-
 * boosting reduces bias
-
 * stacking improves generalisation
 
 6.5.5 Results
 
 * Baseline Accuracy: 0.84
-
 * Ensemble Accuracy: 0.89
 
 6.5.6 Evaluation 
@@ -175,15 +158,12 @@ for layer in model.encoder.layer[:-2]:
 6.6.4 Technical Analysis
 
 * early layers retain general features
-
 * later layers adapt to domain-specific data
-
 * reduces training cost significantly
 
 6.6.5 Results
 
 * Training Time Reduction: ~70%
-
 * Performance Retention: High
 
 6.6.6 Evaluation 
@@ -193,7 +173,6 @@ Transfer learning provides efficient adaptation with minimal performance loss.
 6.6.7 Engineering Considerations
 
 * layer selection impacts performance
-
 * risk of underfitting if too many layers are frozen
 
 6.7 Explainable AI (XAI) System
@@ -223,7 +202,6 @@ SHAP provides local and global explanations, enables feature-level interpretabil
 6.7.5 Results: 
 
 * Top Features Identified
-
 * Explanation Consistency: High
 
 6.7.6 Evaluation 
@@ -233,9 +211,7 @@ XAI improves transparency but introduces additional computational overhead.
 6.7.7 Engineering Considerations
 
 * performance vs interpretability trade-off
-
 * explanation latency
-
 * stakeholder usability
 
 6.8 Comparative Evaluation
@@ -248,16 +224,13 @@ Ensemble Learning					Performance		Higher computation
 
 Transfer Learning					Efficiency			Limited flexibility
 
-XAI															Transparency		Added overhead
+XAI												Transparency		Added overhead
 
 6.9 Implemented System Summary
 
 * Implemented federated learning for decentralised training
-
 * Built ensemble models for performance optimisation
-
 * Applied transfer learning to reduce training cost
-
 * Integrated explainability tools for transparency
 
 6.10 Conclusion 
@@ -265,7 +238,5 @@ XAI															Transparency		Added overhead
 This chapter demonstrated the integration of multiple advanced AI techniques into a unified system. The results highlight that:
 
 * privacy, performance, and interpretability can be balanced
-
 * advanced methods introduce trade-offs that must be managed
-
 * system-level design is critical for real-world AI applications
