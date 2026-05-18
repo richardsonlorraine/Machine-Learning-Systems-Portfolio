@@ -21,6 +21,7 @@ Unlike experimental workflows, this pipeline enforces structured data transforma
 1.2 System Overview: 
 
 The pipeline is structured as a sequence of deterministic transformations:
+
 Raw Data -> Data Engineering Layer -> Preprocessing Pipeline -> Model Training -> Evaluation -> Inference Interface
 Each stage is modular, enabling independent updates and reuse across different datasets and models.
 
@@ -37,6 +38,7 @@ Raw Data → Cleaning → Validation → Structured Dataset
 1.3.3 Implementation:   
 
 Data preprocessing was implemented using pandas.
+
 import pandas as pd
 df = pd.read_csv("data.csv")
 df = df.dropna()
@@ -75,6 +77,7 @@ Structured Data → Encoding / Scaling → Model-Ready Features
 1.4.3 Implementation:  
 
 Feature transformations were implemented using pipelines from scikit-learn.
+
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 preprocessor = ColumnTransformer([("num", StandardScaler(), numerical_features), ("cat", OneHotEncoder(), categorical_features)])
@@ -111,6 +114,7 @@ Features → Model Training → Trained Model
 1.5.3 Implementation: 
 
 The model was trained using standard machine learning techniques from scikit-learn and optionally deep learning via TensorFlow.
+
 from sklearn.ensemble import RandomForestClassifier
 model = RandomForestClassifier()
 model.fit(X_train, y_train)
