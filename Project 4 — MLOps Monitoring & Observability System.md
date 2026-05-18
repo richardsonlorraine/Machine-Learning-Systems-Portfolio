@@ -211,11 +211,9 @@ Alerts are triggered when:
 
 4.8.4 Results
 
-Drift Alert: Triggered
-
-Latency Alert: Not Triggered
-
-Error Alert: Not Triggered
+* Drift Alert: Triggered
+* Latency Alert: Not Triggered
+* Error Alert: Not Triggered
 
 4.8.5 Evaluation 
 
@@ -223,11 +221,9 @@ Alerting enables rapid response but must be tuned to avoid alert fatigue.
 
 4.8.6 Engineering Considerations
 
-threshold tuning
-
-false positives vs missed detections
-
-escalation policies
+* threshold tuning
+* false positives vs missed detections
+* escalation policies
 
 4.9 Repository Structure
 
