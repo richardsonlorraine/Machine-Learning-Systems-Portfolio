@@ -213,15 +213,15 @@ XAI improves transparency but introduces additional computational overhead.
 
 6.8 Comparative Evaluation
 
-Technique												Benefit							Trade-Off
+Technique			->									Benefit					->		Trade-Off
 
-Federated Learning							Privacy							Slight accuracy drop
+Federated Learning		->					Privacy				->			Slight accuracy drop
 
-Ensemble Learning								Performance					Higher computation
+Ensemble Learning			->					Performance			->		Higher computation
 
-Transfer Learning								Efficiency					Limited flexibility
+Transfer Learning			->					Efficiency			->		Limited flexibility
 
-XAI															Transparency				Added overhead
+XAI							->								Transparency		->		Added overhead
 
 6.9 Implemented System Summary
 
