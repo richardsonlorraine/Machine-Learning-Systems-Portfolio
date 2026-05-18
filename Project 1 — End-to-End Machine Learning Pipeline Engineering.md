@@ -79,7 +79,8 @@ preprocessor = ColumnTransformer([("num", StandardScaler(), numerical_features),
 * Categorical variables encoded: Yes
 * Output: Model-ready feature matrix
 
-1.4.6 Evaluation Feature engineering improves model performance by ensuring input consistency. However, one-hot encoding may increase dimensionality significantly.
+1.4.6 Evaluation 
+Feature engineering improves model performance by ensuring input consistency. However, one-hot encoding may increase dimensionality significantly.
 
 1.4.7 Engineering Considerations
 * High-dimensional features increase computational cost
