@@ -3,15 +3,12 @@ Project 4 — MLOps Monitoring & Observability System
 Highlights: 
 
 * latency tracking, 
-
 * drift detection and 
-
 * alerting
 
 Tech: 
 
 * Prometheus and 
-
 * Grafana
 
 4.1 Introduction 
@@ -19,19 +16,14 @@ Tech:
 This chapter presents the design and implementation of a production-grade MLOps monitoring and observability system, developed to ensure the reliability and performance of deployed machine learning models. While model deployment enables real-time inference, it introduces new risks:
 
 * performance degradation
-
 * data drift
-
 * system failures
-
 * silent model errors
 
 To address these challenges, this system provides continuous monitoring across:
 
 * system performance
-
 * model behaviour
-
 * input data characteristics
 
 The objective is to maintain trustworthy, stable, and high-performing ML systems in production environments.
@@ -69,9 +61,7 @@ Metrics must be understandable by both engineers and stakeholders.
 To track system-level metrics such as: 
 
 * latency, 
-
 * throughput, and 
-
 * error rates.
 
 4.4.2 Architecture
@@ -83,23 +73,18 @@ API Requests → Response Time Tracking → Metrics Storage → Dashboard
 Metrics were collected and visualised using:
 
 * Prometheus and 
-
 * Grafana
 
 4.4.4 Technical Analysis
 
 * latency measured per request
-
 * metrics aggregated over time windows
-
 * dashboards provide real-time visualisation
 
 4.4.5 Results
 
 * Average Latency: 120ms
-
 * P99 Latency: 180ms
-
 * Error Rate: < 1%
 
 4.4.6 Evaluation 
@@ -109,9 +94,7 @@ System monitoring ensures that performance degradation is detected early. Howeve
 4.4.7 Engineering Considerations
 
 * trade-off between metric granularity and performance
-
 * storage requirements for long-term logs
-
 * alert threshold tuning
 
 4.5 Data Drift Detection System
@@ -137,17 +120,13 @@ def detect_drift(train, production):
 4.5.4 Technical Analysis
 
 * compares statistical properties of datasets
-
 * identifies shifts in feature distributions
-
 * provides a quantitative drift score
 
 4.5.5 Results
 
 * Drift Score: 0.12
-
 * Threshold: 0.10
-
 * Drift Detected: Yes
 
 4.5.6 Evaluation 
@@ -157,9 +136,7 @@ The drift detection system successfully identifies distribution shifts. However,
 4.5.7 Engineering Considerations
 
 * threshold selection is critical
-
 * multivariate drift detection may be required
-
 * drift does not always imply performance degradation
 
 4.6 Model Performance Monitoring
@@ -175,7 +152,6 @@ Predictions → Ground Truth → Metric Calculation → Performance Tracking
 4.6.3 Implementation
 
 * periodic evaluation using labelled data
-
 * tracking of key metrics (F1, accuracy)
 
 4.6.4 Results: 
@@ -189,9 +165,7 @@ The system detects performance degradation, enabling proactive intervention. How
 4.6.6 Engineering Considerations
 
 * delayed labels impact monitoring accuracy
-
 * proxy metrics may be required
-
 * continuous evaluation pipelines needed
 
 4.7 Logging and Observability
@@ -205,7 +179,6 @@ The system detects performance degradation, enabling proactive intervention. How
 4.7.4 Results
 
 * Log Coverage: Complete
-
 * Error Traceability: Enabled
 
 4.7.5 Evaluation 
@@ -215,9 +188,7 @@ Logging enables root cause analysis and debugging. However, excessive logging ca
 4.7.6 Engineering Considerations
 
 * log volume management
-
 * sensitive data handling
-
 * retention policies
 
 4.8 Alerting System
