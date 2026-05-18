@@ -4,14 +4,13 @@ Highlights: REST API, Docker containerisation and Kubernetes deployment
 
 Tech: Docker and Azure Kubernetes Service
 
-3.1 Introduction This chapter presents the design and implementation of a production-grade machine learning deployment system, enabling trained models to be served reliably in real-time environments. The system is designed to address key challenges in deploying ML models, including:
+3.1 Introduction 
+
+This chapter presents the design and implementation of a production-grade machine learning deployment system, enabling trained models to be served reliably in real-time environments. The system is designed to address key challenges in deploying ML models, including:
 
 * environment consistency, 
-
 * scalability, 
-
 * reliability and 
-
 * observability
 
 The architecture integrates containerisation, cloud orchestration, and automated CI/CD pipelines to support enterprise-level deployment workflows.
@@ -39,17 +38,13 @@ Supports horizontal scaling through Azure Kubernetes Service.
 3.3.3 Resilience Implements:
 
 * health checks, 
-
 * rolling updates, 
-
 * blue/green deployment strategies to minimise downtime.
 
 3.3.4 Efficiency 
 
 * Optimises inference latency through:
-
 * lightweight containers
-
 * model compression / quantisation
 
 3.4 Inference API System
@@ -97,17 +92,13 @@ if __name__ == '__main__':
 3.4.4 Technical Analysis
 
 * Model is loaded into memory for low-latency inference
-
 * API handles structured JSON input
-
 * Exception handling ensures robustness
 
 3.4.5 Results
 
 * Inference latency (P99): ~150ms
-
 * Response format: JSON
-
 * Error handling: Implemented
 
 3.4.6 Evaluation 
@@ -117,9 +108,7 @@ The API enables real-time inference with low latency and structured communicatio
 3.4.7 Engineering Considerations
 
 * stateless API design for scalability
-
 * input validation required for production
-
 * concurrency handling under load
 
 3.5 Containerisation System
@@ -153,15 +142,12 @@ CMD ["python", "app.py"]
 3.5.4 Technical Analysis
 
 * lightweight base image reduces size
-
 * dependency pinning ensures consistency
-
 * container acts as immutable deployment unit
 
 3.5.5 Results
 
 * Image size: Optimised
-
 * Deployment reproducibility: High
 
 3.5.6 Evaluation 
@@ -171,9 +157,7 @@ Containerisation eliminates environment mismatch and simplifies deployment workf
 3.5.7 Engineering Considerations
 
 * image size impacts deployment speed
-
 * security vulnerabilities must be managed
-
 * dependency updates require rebuilds
 
 3.6 Orchestration and Cloud Deployment
@@ -191,23 +175,18 @@ Docker Image → Azure Container Registry → AKS Cluster → Load Balancer
 Deployment uses:
 
 * Azure Container Instances (testing)
-
 * Azure Kubernetes Service (production)
 
 3.6.4 Technical Analysis
 
 * AKS manages scaling and load balancing
-
 * ACR stores versioned container images
-
 * deployments are automated via CI/CD pipelines
 
 3.6.5 Results
 
 * Deployment time: < 15 minutes
-
 * Auto-scaling: Enabled
-
 * High availability: Achieved
 
 3.6.6 Evaluation 
@@ -217,9 +196,7 @@ Cloud orchestration enables robust, scalable deployment but introduces operation
 3.6.7 Engineering Considerations
 
 * cluster configuration impacts cost
-
 * scaling policies must be tuned
-
 * monitoring is required for stability
 
 3.7 CI/CD Pipeline
@@ -235,17 +212,13 @@ Code Commit → Build → Test → Deploy
 3.7.3 Implementation
 
 * Docker images built on commit
-
 * automated validation checks
-
 * deployment triggered on successful tests
 
 3.7.4 Evaluation CI/CD improves:
 
 * deployment speed
-
 * reliability
-
 * consistency
 
 3.8 Monitoring and Performance Metrics
@@ -257,11 +230,8 @@ To track system performance and detect failures.
 3.8.2 Metrics
 
 * Latency (P99): < 200ms
-
 * Deployment Time: < 15 mins
-
 * Data Drift Threshold: >10%
-
 * Quantisation Ratio: 4:1
 
 3.8.3 Evaluation 
@@ -269,9 +239,7 @@ To track system performance and detect failures.
 Monitoring ensures:
 
 * system reliability
-
 * early failure detection
-
 * performance optimisation
 
 3.9 Repository Structure
@@ -291,11 +259,8 @@ Monitoring ensures:
 3.10 Implemented System Summary
 
 * Built REST API for model inference
-
 * Containerised application using Docker
-
 * Deployed system using Azure Kubernetes Service
-
 * Implemented CI/CD pipeline for automated deployment
 
 * Monitored performance using latency and drift metrics
@@ -305,9 +270,7 @@ Monitoring ensures:
 This chapter demonstrated the implementation of a production-grade ML deployment system. The system highlights:
 
 * the importance of containerisation and orchestration
-
 * the role of CI/CD in automation
-
 * the need for monitoring in production environments
 
 These components are essential for transitioning machine learning models from experimentation to real-world deployment.
