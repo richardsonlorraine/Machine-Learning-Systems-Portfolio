@@ -4,6 +4,7 @@ Highlights:
 * End-to-end pipeline,
 * feature engineering and
 * strong evaluation
+
 Tech: 
 * Python,
 * pandas,
