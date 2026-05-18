@@ -203,10 +203,15 @@ Adapters are merged with base model for inference.
 2.8 Repository Structure
 
 02_llm_finetuning_framework
+
 ├── dataset/
+
 ├── training/
+
 ├── evaluation/
+
 ├── inference/
+
 └── config/
 
 2.9 Implemented System Summary
