@@ -31,6 +31,7 @@ Each stage is modular, enabling independent updates and reuse across different d
 To transform unstructured or inconsistent raw data into a clean and structured format suitable for downstream machine learning tasks.
 
 1.3.2 Architecture:  
+
 Raw Data → Cleaning → Validation → Structured Dataset
 
 1.3.3 Implementation:   
@@ -68,6 +69,7 @@ The preprocessing stage significantly improves model reliability by ensuring cle
 To convert raw input features into a format suitable for model training.
 
 1.4.2 Architecture:  
+
 Structured Data → Encoding / Scaling → Model-Ready Features
 
 1.4.3 Implementation:  
@@ -99,9 +101,11 @@ Feature engineering improves model performance by ensuring input consistency. Ho
 1.5 Model Training System
 
 1.5.1 Objective: 
+
 To train a predictive model capable of generalising to unseen data.
 
 1.5.2 Architecture 
+
 Features → Model Training → Trained Model
 
 1.5.3 Implementation: 
@@ -158,9 +162,11 @@ To assess model performance using quantitative metrics.
 To generate predictions on unseen data using the trained model.
 
 1.7.2 Architecture: 
+
 New Data → Preprocessing → Model → Prediction
 
 1.7.3 Implementation: 
+
 prediction = model.predict(new_data)
 
 1.7.4 Results:
