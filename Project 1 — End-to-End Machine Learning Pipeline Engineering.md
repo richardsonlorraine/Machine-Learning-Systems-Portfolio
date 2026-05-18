@@ -10,6 +10,7 @@ Tech:
 * scikit-learn
 
 1.1 Introduction: 
+
 This chapter presents the design and implementation of a modular end-to-end machine learning pipeline that manages the complete lifecycle of a predictive model, from raw data ingestion through to inference. The system is designed with a focus on:
 * Reproducibility, 
 * scalability, 
@@ -18,6 +19,7 @@ This chapter presents the design and implementation of a modular end-to-end mach
 Unlike experimental workflows, this pipeline enforces structured data transformations and consistent processing across both training and inference environments.
 
 1.2 System Overview: 
+
 The pipeline is structured as a sequence of deterministic transformations:
 Raw Data -> Data Engineering Layer -> Preprocessing Pipeline -> Model Training -> Evaluation -> Inference Interface
 Each stage is modular, enabling independent updates and reuse across different datasets and models.
@@ -25,12 +27,14 @@ Each stage is modular, enabling independent updates and reuse across different d
 1.3 Data Engineering Layer
 
 1.3.1 Objective:  
+
 To transform unstructured or inconsistent raw data into a clean and structured format suitable for downstream machine learning tasks.
 
 1.3.2 Architecture:  
 Raw Data → Cleaning → Validation → Structured Dataset
 
 1.3.3 Implementation:   
+
 Data preprocessing was implemented using pandas.
 import pandas as pd
 df = pd.read_csv("data.csv")
@@ -43,11 +47,13 @@ df = df.drop_duplicates()
 * Data consistency is enforced prior to feature transformation
 
 1.3.5 Results: 
+
 Dataset cleaned and standardised
 * Null values removed: Yes
 * Duplicate rows removed: Yes
 
-1.3.6 Evaluation:  
+1.3.6 Evaluation: 
+
 The preprocessing stage significantly improves model reliability by ensuring clean input data. However, aggressive cleaning may lead to loss of potentially useful information.
 
 1.3.7 Engineering Considerations: 
@@ -58,12 +64,14 @@ The preprocessing stage significantly improves model reliability by ensuring cle
 1.4 Feature Engineering & Transformation
 
 1.4.1 Objective:  
+
 To convert raw input features into a format suitable for model training.
 
 1.4.2 Architecture:  
 Structured Data → Encoding / Scaling → Model-Ready Features
 
 1.4.3 Implementation:  
+
 Feature transformations were implemented using pipelines from scikit-learn.
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
@@ -80,6 +88,7 @@ preprocessor = ColumnTransformer([("num", StandardScaler(), numerical_features),
 * Output: Model-ready feature matrix
 
 1.4.6 Evaluation:   
+
 Feature engineering improves model performance by ensuring input consistency. However, one-hot encoding may increase dimensionality significantly.
 
 1.4.7 Engineering Considerations: 
@@ -96,6 +105,7 @@ To train a predictive model capable of generalising to unseen data.
 Features → Model Training → Trained Model
 
 1.5.3 Implementation: 
+
 The model was trained using standard machine learning techniques from scikit-learn and optionally deep learning via TensorFlow.
 from sklearn.ensemble import RandomForestClassifier
 model = RandomForestClassifier()
@@ -112,6 +122,7 @@ model.fit(X_train, y_train)
 * Cross-validation variance: Low
 
 1.5.6 Evaluation: 
+
 The model demonstrates strong predictive performance and generalisation capability. Performance stability indicates effective preprocessing and feature engineering.
 
 1.5.7 Engineering Considerations:
@@ -122,6 +133,7 @@ The model demonstrates strong predictive performance and generalisation capabili
 1.6 Model Evaluation
 
 1.6.1 Objective: 
+
 To assess model performance using quantitative metrics.
 
 1.6.2 Metrics: 
@@ -142,6 +154,7 @@ To assess model performance using quantitative metrics.
 1.7 Inference System
 
 1.7.1 Objective: 
+
 To generate predictions on unseen data using the trained model.
 
 1.7.2 Architecture: 
@@ -155,7 +168,8 @@ prediction = model.predict(new_data)
 * Output: Predicted class
 * Latency: ~120ms
 
-1.7.5 Evaluation:   
+1.7.5 Evaluation:  
+
 The inference system provides fast and consistent predictions. Latency remains within acceptable production thresholds.
 
 1.7.6 Engineering Considerations:
@@ -171,6 +185,7 @@ The inference system provides fast and consistent predictions. Latency remains w
 * Implemented inference pipeline for real-time predictions
 
 1.9 Conclusion: 
+
 This chapter demonstrated the development of a complete machine learning pipeline, from data preprocessing to model inference. The system highlights the importance of:
 * modular design
 * reproducibility
