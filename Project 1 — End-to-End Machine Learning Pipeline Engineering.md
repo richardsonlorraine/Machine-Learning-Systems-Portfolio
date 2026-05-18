@@ -95,7 +95,7 @@ To train a predictive model capable of generalising to unseen data.
 1.5.2 Architecture 
 Features → Model Training → Trained Model
 
-1.5.3 Implementation 
+1.5.3 Implementation: 
 The model was trained using standard machine learning techniques from scikit-learn and optionally deep learning via TensorFlow.
 from sklearn.ensemble import RandomForestClassifier
 model = RandomForestClassifier()
