@@ -149,6 +149,7 @@ Pretrained Model → Layer Freezing → Fine-Tuning → Adapted Model
 Selective layer freezing was applied during training.
 
 for layer in model.encoder.layer[:-2]:
+
     layer.trainable = False
 
 6.6.4 Technical Analysis
