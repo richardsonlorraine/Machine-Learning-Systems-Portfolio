@@ -262,7 +262,6 @@ Monitoring ensures:
 * Containerised application using Docker
 * Deployed system using Azure Kubernetes Service
 * Implemented CI/CD pipeline for automated deployment
-
 * Monitored performance using latency and drift metrics
 
 3.11 Conclusion 
