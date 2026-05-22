@@ -76,13 +76,14 @@ print(f"Stress Response Time: {time.time() - start_stress:.2f}s")
 
 4. Continuous Lifecycle Management The lifecycle doesn't end at deployment. Production environments are dynamic, requiring:
 
-1. Continuous Monitoring: Tracking real-time latency and error rates to catch degradation early.
-2. Model Drift Detection: Identifying when changes in user behavior or data environments make the current model obsolete.
-3. Scheduled Retraining: Using new production data and user feedback to refresh the model’s knowledge.
+* Continuous Monitoring: Tracking real-time latency and error rates to catch degradation early.
+* Model Drift Detection: Identifying when changes in user behavior or data environments make the current model obsolete.
+* Scheduled Retraining: Using new production data and user feedback to refresh the model’s knowledge.
 
 5. Summary Checklist
 
 * Balance: A 1% drop in accuracy is often an acceptable trade for a 50% reduction in latency.
 * Observability: Use tools like psutil to ensure your agent doesn't "starve" the rest of the system for resources.
 * Robustness: Use Adversarial/Jailbreak Prompts during testing to ensure the agent’s safety filters are functional.
+
 By integrating these evaluation and optimization steps, you move from building "black box" models to managing a transparent, high-performance AIOps pipeline.
