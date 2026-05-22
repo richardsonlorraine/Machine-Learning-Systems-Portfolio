@@ -1,6 +1,10 @@
-Fundamentals of AI Agents transitions from the theory of autonomous intelligence to the practical implementation of a Goal-Based Agent using Python.
+Fundamentals of AI Agents transitions 
 
-I. The Agentic Framework An AI Agent is defined as an entity that perceives its Environment through Sensors and acts upon it via Effectors.
+from the theory of autonomous intelligence to the practical implementation of a Goal-Based Agent using Python.
+
+I. The Agentic Framework 
+
+An AI Agent is defined as an entity that perceives its Environment through Sensors and acts upon it via Effectors.
 
 The Perceive-Think-Act Loop
 
@@ -13,6 +17,7 @@ The Perceive-Think-Act Loop
 II. Classification of AI Agents 
 
 Agents are categorized by their reasoning depth and how they handle information:
+
 Agent Type ->	Reasoning Logic ->	Example
 
 Simple Reflex ->	If [Condition] then [Action]. No memory. ->	A thermostat.
