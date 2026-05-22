@@ -1,3 +1,3 @@
 mkdir ml-systems-portfolio
 cd ml-systems-portfolio
-mkdir 01_ml_pipeline 02_llm_finetuning 03_model_deployment 04_mlops_monitoring 05_ai_troubleshooting 06_advanced_ai
+mkdir 01_ml_pipeline 02_llm_finetuning 03_model_deployment 04_mlops_monitoring 05_ai_troubleshooting 06_advanced_ai 07_miscel
