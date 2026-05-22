@@ -10,6 +10,7 @@ Optimization occurs at two distinct levels:
 
 * Model-Level: Pruning, Quantization, and Knowledge Distillation to simplify the math.
 * Infrastructure-Level: Caching, Batching, and Hardware Acceleration (GPUs/TPUs) to optimize the environment.
+
 2. Implementation:
 
 Model Trimming & Quantization 
