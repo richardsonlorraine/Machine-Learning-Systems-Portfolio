@@ -14,9 +14,13 @@ II. Classification of AI Agents
 
 Agents are categorized by their reasoning depth and how they handle information:
 Agent Type ->	Reasoning Logic ->	Example
+
 Simple Reflex ->	If [Condition] then [Action]. No memory. ->	A thermostat.
+
 Model-Based ->	Maintains an internal "state" to track unseen data. ->	A bot that remembers your name from a previous turn.
+
 Goal-Based ->	Plans sequences to achieve a specific future state ->	A GPS pathfinder.
+
 Utility-Based ->	Optimizes for the "best" outcome (speed vs. safety). ->	A self-driving car choosing the safest lane.
 
 III. Coding a Troubleshooting Agent 
