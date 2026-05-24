@@ -30,7 +30,7 @@ III. Coding a Troubleshooting Agent
 
 This Python implementation demonstrates a Model-Based Reflex Agent that uses a decision tree to diagnose network issues.
 
-## --- PHASE 1: Knowledge Representation ---
+# --- PHASE 1: Knowledge Representation ---
 
 knowledge_base = {"restart": "Please power cycle your router for 30 seconds.", "cables": "Check that the Ethernet cable is clicked into the WAN port.", "isp": "No local issues detected. Contact your ISP support line."} # --- PHASE 2: Diagnostic Reasoning (The 'Think' Layer) ---
 def start_diagnostic():
