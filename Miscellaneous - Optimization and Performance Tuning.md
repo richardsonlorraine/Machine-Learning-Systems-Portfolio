@@ -21,9 +21,7 @@ import tensorflow as tf
 
 import tensorflow_model_optimization as tfmot
 
-import numpy as np
-
-# 1. Pruning: Trimming the "Fat"
+import numpy as np # 1. Pruning: Trimming the "Fat"
 
 pruning_params = {'pruning_schedule': 
 
