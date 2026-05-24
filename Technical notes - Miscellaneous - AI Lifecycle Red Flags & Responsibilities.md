@@ -23,7 +23,7 @@ The Practitioner’s Responsibility Loop: When a red flag is identified, the pra
  4. Monitor: Verify the resolution and implement regression checks to prevent recurrence.
 Core Ethical Pillars & Mitigation Strategies
 
-1. Bias and Fairness
+Bias and Fairness
 
 * The Risk: Historical biases in data lead to discriminatory treatment (e.g., inequitable loan approvals).
 * Strategy:
@@ -31,21 +31,21 @@ Core Ethical Pillars & Mitigation Strategies
 	* Tools: Use libraries like Fairlearn or AIF360.
 	* Action: Apply re-weighting (pre-processing) or threshold adjustment (post-processing).
 
-2. Transparency and Explainability (XAI)
+Transparency and Explainability (XAI)
 
 * The Risk: "Black-box" models prevent debugging and erode stakeholder trust.
 * Strategy:
 	* Local Explanations: Use SHAP or LIME to explain individual predictions.
 	* Global Explanations: Use Feature Importance to understand overall model behavior.
 
-3. Data Privacy and Security
+Data Privacy and Security
 
 * The Risk: Data breaches or re-identification of sensitive PII.
 * Strategy:
 	* Principle: Practice Data Minimization (only collect what is necessary).
 	* Technical: Implement encryption at rest/transit and robust RBAC (Role-Based Access Control).
 
-4. Accountability and Oversight
+Accountability and Oversight
 
 * The Risk: "The AI made me do it" syndrome—shifting blame to the algorithm.
 * Strategy:
