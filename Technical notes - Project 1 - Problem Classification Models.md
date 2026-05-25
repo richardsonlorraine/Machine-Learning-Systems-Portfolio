@@ -8,7 +8,7 @@ Problem classification models are the backbone of intelligent troubleshooting, a
 * Phase 2: Feature Extraction: Converting raw text into numerical vectors using techniques like TF-IDF or Word Embeddings.
 * Phase 3: Training: Algorithms analyze labeled data to find patterns.
 * Phase 4: Prediction/Inference: The model assigns a category and a probability score to new, unseen tickets.
-* 
+
 2. Core Classification Algorithms
 
 Algorithm		->	Best For...	->	Key Strength	->	Weakness
@@ -51,9 +51,7 @@ X = df.drop('problem_type', axis=1)
 
 y = df['problem_type'] # 2. Split Data (80% Train, 20% Test)
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-# 3. Model Training & Comparison
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42) # 3. Model Training & Comparison
 
 models = {"LogReg": LogisticRegression(max_iter=1000), "DecTree":
 
