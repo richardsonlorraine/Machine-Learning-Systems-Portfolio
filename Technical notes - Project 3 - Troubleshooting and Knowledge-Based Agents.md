@@ -1,10 +1,21 @@
 Troubleshooting and Knowledge-Based Agents
+
 Modern infrastructure requires Self-Healing systems. A Troubleshooting Agent is a specialized AI designed to bridge the gap between error detection and autonomous resolution, significantly reducing Mean Time to Recovery (MTTR).
-1. The Agent Architecture A robust troubleshooting agent is built on three core pillars:
-Knowledge Base: A structured repository (Knowledge Graphs or Rule Databases) containing system logs, error-to-cause mappings, and step-by-step resolution guides.
-Reasoning Engine: The "brain" that uses NLP to classify support tickets and diagnostic algorithms (like Decision Trees) to pinpoint root causes.
-Feedback Loop: A mechanism where the agent learns from user ratings and success rates to update its knowledge base over time.
-2. Implementation: The Diagnostic Pipeline This implementation integrates Isolation Forest for anomaly detection and Z-Scores for attribution, providing a clear path from "something is wrong" to "here is why."
+
+1. The Agent Architecture
+
+A robust troubleshooting agent is built on three core pillars:
+
+* Knowledge Base: A structured repository (Knowledge Graphs or Rule Databases) containing system logs, error-to-cause mappings, and step-by-step resolution guides.
+* Reasoning Engine: The "brain" that uses NLP to classify support tickets and diagnostic algorithms (like Decision Trees) to pinpoint root causes.
+* Feedback Loop: A mechanism where the agent learns from user ratings and success rates to update its knowledge base over time.
+
+4. Implementation:
+
+The Diagnostic Pipeline 
+
+This implementation integrates Isolation Forest for anomaly detection and Z-Scores for attribution, providing a clear path from "something is wrong" to "here is why."
+
 import pandas as pd
 import numpy as np
 from sklearn.ensemble import IsolationForest
@@ -27,29 +38,27 @@ df.at[0, 'network_latency'] = 1000
 cause = get_cause(df.iloc[0])
 print(f"Detected Cause: {cause}")
 print(f"Action: {recommend_fix(cause)}")
-3. Enterprise Pipeline Troubleshooting In an Azure ML environment, troubleshooting moves from local scripts to Enterprise Orchestration. The process follows a strict hierarchy:
+5. Enterprise Pipeline Troubleshooting In an Azure ML environment, troubleshooting moves from local scripts to Enterprise Orchestration. The process follows a strict hierarchy:
 1. Monitor & Alert: Use Application Insights to detect failures.
 2. Examine Logs: Access azureml logs to find specific TypeError or ResourceExhaustion messages.
 3. Data Validation: Run integrity checks to catch "Data Quality" issues (e.g., unexpected nulls) before they reach the model.
 4. Resource Review: Adjust CPU/Memory in the Azure Kubernetes Service (AKS) configuration if the agent crashes under load.
-4. Summary: The Operational Core
-Capability
-Industrial Value
 
-Anomaly Detection
-Identifies "unknown unknowns" without pre-labeled error sets.
+6. Summary: The Operational Core
+Capability -> Industrial Value
 
-Z-Score Attribution
-Provides Explainable AI (XAI); sysadmins see why a flag was raised.
+Anomaly Detection -> Identifies "unknown unknowns" without pre-labeled error sets.
 
-Enterprise SDKs
-Uses azureml for auditable, scalable deployments in Kubernetes.
+Z-Score Attribution -> Provides Explainable AI (XAI); sysadmins see why a flag was raised.
 
-Self-Healing
-Closes the loop by mapping detected causes directly to remediation scripts.
+Enterprise SDKs -> Uses azureml for auditable, scalable deployments in Kubernetes.
+
+Self-Healing -> Closes the loop by mapping detected causes directly to remediation scripts.
 
 5. Final Checklist for Reliability
-Staging Environments: Always validate model updates in a staging endpoint before pushing to production.
-Drift Detection: Monitor for "Model Drift" where customer patterns change, necessitating a retraining loop.
-Defensive Engineering: Implement validate_data() functions to halt pipelines the moment corrupted input is detected.
+
+* Staging Environments: Always validate model updates in a staging endpoint before pushing to production.
+* Drift Detection: Monitor for "Model Drift" where customer patterns change, necessitating a retraining loop.
+* Defensive Engineering: Implement validate_data() functions to halt pipelines the moment corrupted input is detected.
+
 This approach transforms a static prediction model into an Adaptive Agent capable of maintaining high-availability infrastructure with minimal human intervention.
