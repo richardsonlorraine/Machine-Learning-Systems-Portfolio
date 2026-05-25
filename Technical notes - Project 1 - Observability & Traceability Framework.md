@@ -54,14 +54,18 @@ def run_traceable_pipeline(data_path):
 
 run_traceable_pipeline('your-dataset.csv')
 
-3. Resilience through Drift Detection Models exist in evolving environments. Data Drift occurs when the statistical properties of production data shift away from the training baseline, making the model obsolete.
+3. Resilience through Drift Detection
+
+Models exist in evolving environments. Data Drift occurs when the statistical properties of production data shift away from the training baseline, making the model obsolete.
 
 The "Tripwire" Mechanism: Engineers use statistical tests like the Kolmogorov-Smirnov (KS) test.
 
 * p-value > 0.05: The environment is stable; continue inference.
 * p-value < 0.05: Significant drift detected; the system triggers a Retrain Flag.
 
-4. Proactive Governance & Self-Healing A robust "Operational Core" doesn't just watch for failure; it fixes it.
+4. Proactive Governance & Self-Healing
+
+A robust "Operational Core" doesn't just watch for failure; it fixes it.
 
 * Self-Healing Loop: When drift is detected, the system automatically initiates a retraining cycle using the new data distribution.
 * Industrial Resilience: This "set-and-forget" capability is vital for high-stakes industries like finance or healthcare, where manual monitoring of every data shift is impossible.
