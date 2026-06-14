@@ -82,11 +82,19 @@ Structured Data → Encoding / Scaling → Model-Ready Features
 
 Feature transformations were implemented using pipelines from scikit-learn.
 
-from sklearn.compose import ColumnTransformer
+# Fix: Define feature column configurations explicitly
 
-from sklearn.preprocessing import StandardScaler, OneHotEncoder
+numerical_features = ["age", "income", "transaction_amount"]
 
-preprocessor = ColumnTransformer([("num", StandardScaler(), numerical_features), ("cat", OneHotEncoder(), categorical_features)])
+categorical_features = ["device_type", "region"]
+
+preprocessor = ColumnTransformer([
+
+    ("num", StandardScaler(), numerical_features), 
+
+    # Operational tip: handle_unknown='ignore' prevents crashes on unseen production data
+
+    ("cat", OneHotEncoder(handle_unknown='ignore'), categorical_features)])
 
 1.4.4 Technical Analysis:
 * Numerical features are standardised to ensure consistent magnitude
