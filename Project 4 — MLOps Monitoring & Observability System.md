@@ -111,12 +111,20 @@ Training Data Distribution -> Production Data Distribution -> Statistical Compar
 
 Statistical drift detection methods were applied to compare distributions.
 
-import numpy as np
+from scipy.stats import ks_2samp
 
-def detect_drift(train, production):
+def detect_drift(train, production, alpha=0.05):
 
-    return np.abs(np.mean(train) - np.mean(production))
-
+    """Evaluates non-parametric distribution changes between baseline and production telemetry."""
+    
+    # Returns test statistic and p-value
+    
+    _, p_value = ks_2samp(train, production)    
+    
+    # If p-value is lower than significance level (alpha), reject null hypothesis (Drift Detected)
+    
+    return p_value < alpha
+    
 4.5.4 Technical Analysis
 
 * compares statistical properties of datasets
