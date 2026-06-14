@@ -82,7 +82,7 @@ y_pred_knn = knn.predict(X_test)
 
 print(f"KNN Accuracy: {accuracy_score(y_test, y_pred_knn) * 100:.2f}%")
 
-7. Summary Checklist for Implementation
+5. Summary Checklist for Implementation
 
 * Data Integrity: Use median imputation for missing values.
 * Validation: Always use a stratified train-test split to ensure the model generalizes.
