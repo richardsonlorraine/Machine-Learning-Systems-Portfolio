@@ -73,6 +73,7 @@ Federated averaging was implemented to aggregate model updates.
 import numpy as np
 
 def federated_averaging(local_weights):
+
     return np.mean(local_weights, axis=0)
 
 6.4.4 Technical Analysis
