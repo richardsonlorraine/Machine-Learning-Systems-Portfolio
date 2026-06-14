@@ -63,6 +63,8 @@ The inference API was implemented using a lightweight web framework.
 
 from flask import Flask, request, jsonify
 
+from flask import Flask, request, jsonify
+
 import joblib
 
 app = Flask(__name__)
@@ -88,7 +90,7 @@ def predict():
 if __name__ == '__main__':
 
     app.run(host='0.0.0.0', port=80)
-
+    
 3.4.4 Technical Analysis
 
 * Model is loaded into memory for low-latency inference
@@ -126,6 +128,9 @@ Application Code + Dependencies → Docker Image → Deployment
 FROM python:3.9-slim
 
 WORKDIR /app
+# Fix: Mitigate container breakout vectors by adding a non-root user
+
+RUN useradd -m serviceuser && chown -R serviceuser /app
 
 COPY requirements.txt .
 
@@ -134,6 +139,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY model.pkl .
 
 COPY app.py .
+
+USER serviceuser
 
 EXPOSE 80
 
