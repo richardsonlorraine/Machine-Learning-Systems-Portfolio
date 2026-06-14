@@ -74,14 +74,19 @@ Where:
 
 2.4.4 Implementation Implemented using Hugging Face Transformers and PEFT.
 
-from transformers import AutoModelForCausalLM, BitsAndBytesConfig
+from transformers import AutoModelForCausalLM
 
-from peft import LoraConfig, get_peft_model
+model_id = "your-target-LLM-identifier"
 
-bnb_config = BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_quant_type="nf4", 
-bnb_4bit_compute_dtype="float16")
+# Fix: Explicitly load the weights into memory first
 
-lora_config = LoraConfig(r=16, lora_alpha=32, target_modules=["q_proj", "v_proj"], lora_dropout=0.05, task_type="CAUSAL_LM")
+base_model = AutoModelForCausalLM.from_pretrained(
+
+    model_id,
+
+    quantization_config=bnb_config,
+
+    device_map="auto")
 
 model = get_peft_model(base_model, lora_config)
 
